@@ -4,5 +4,16 @@ resource "aws_s3_bucket" "mainbucket" {
     tags = {
         env = "${lookup(var.s3_tags, "environment")}"
     }
-    region = "${var.s3_regions[0]}"
+    region = "${var.s3_regions[1]}"
+    versioning = {
+        enabled = true
+    }
+    lifecycle_rule = { 
+        id = "state"
+        prefix = "state/"
+        enabled = true
+    }
+    noncurrent_version_expiration {
+        days = 90
+    }
 }
