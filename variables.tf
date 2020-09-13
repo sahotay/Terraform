@@ -1,5 +1,4 @@
 variable "s3_bucket_name" {
-    // default     = "mytest-bucketineast-1"
     description = "Name of s3 bucket"
     type        = "string"
 }
